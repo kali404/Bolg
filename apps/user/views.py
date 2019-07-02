@@ -9,15 +9,15 @@ from user.utils import *
 class IndexView(View):
     def get(self, request):
         keyword = request.GET.get('keyword')
-        if keyword is None:
-            keyword = Catalog.objects.filter(splendid=True)[0].id
+#        if keyword is None:
+#            keyword = Catalog.objects.filter(splendid=True)[0].id
         context = {
             'user': get_myinfo(1),
             'catalog': get_top(),
             'articles': get_article_index(),
-            'tables': get_box_catalog(keyword),
-            'box_img': get_box_img(keyword),
-            'box_artic': get_box_article(keyword),
+#            'tables': get_box_catalog(keyword),
+#            'box_img': get_box_img(keyword),
+#            'box_artic': get_box_article(keyword),
             'header_artic': get_header_artic,
             'hosts': paihang(),
             'tops': zhiding(),
@@ -73,7 +73,7 @@ class TagsView(View):
         context = {
             'fl': Tags.objects.get(id=tag_id).name,
             'catalog': get_top(),
-            'articles': get_clouds_article(tag_id),
+            'page_home': get_clouds_article(tag_id),
             'lists': get_list(tag_id),
             'hosts': paihang(),
             'tops': zhiding(),

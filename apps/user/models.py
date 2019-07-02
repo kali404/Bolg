@@ -120,7 +120,7 @@ class LBTImg(models.Model):
     title = models.CharField(max_length=20, verbose_name='描述', default='站长很忙没写描述啊,有意见来打我呀')
 
     def __str__(self):
-        return self.image
+        return self.title
 
     class Meta:
         verbose_name = '首页轮播图'

@@ -26,7 +26,8 @@ SECRET_KEY = 'wf%+8v$n%_o#v2_h#o+5_im@!x+bgjes*n)m%8@zd3zgmy!u1^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.226.134:8000', '192.168.226.134']
+
+ALLOWED_HOSTS = ['192.168.226.134:8000', '192.168.226.134','152.136.129.112','www.yefeng.wang','yefeng.wang']
 
 # Application definition
 
