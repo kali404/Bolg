@@ -1,4 +1,5 @@
 # 夜风随笔博客线上部署
+线上预览地址 ---->[夜风随笔](http://yefeng.wang)
 ## 下拉代码到本地
 ```shell script
 git clone -b develop v3.0 https://github.com/kali404/Bolg.git
