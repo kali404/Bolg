@@ -1,0 +1,210 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />  -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>夜风随笔</title>
+    <link rel='stylesheet' id='style-css' href='/static/css/style.css?ver=1.0' type='text/css' media='all'/>
+    <script type='text/javascript' src='/static/js/jquery-2.0.3.min.js'></script>
+    <script type='text/javascript' src='/static/js/a1.js?ver=2.0'></script>
+    <meta name="description" content="">
+    <!--[if lt IE 9]><script src="skin/js/html5.js"></script><script src="skin/js/selectivizr-min.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]> <![endif]-->
+    <script src="/static/js/selectivizr-min.js"></script>
+</head>
+<body class="archive category category-yule category-1">
+<header id="header" class="header">
+    <div class="container-inner">
+        <div class="yusi-logo">
+            <a href="#"><h1><span class="yusi-mono">夜风随笔</span> <span
+                    class="yusi-bloger">– 你要相信，时光，不会辜负每一个平静努力的人。</span></h1></a>
+        </div>
+    </div>
+    <div id="nav-header" class="navbar">
+        <ul class="nav">
+            <li id="menu-item-11"
+                class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-11">
+                <a href="/" aria-current="page">首页</a></li>
+            {% for name in catalog %}
+                <li id="menu-item-4098"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-4098">
+                    <a href="/list/{{ name.id }}/1/">{{ name.name }}</a>
+                    {% if name.lists %}
+                        <ul class="sub-menu">
+                            {% for list in name.lists %}
+                                <li id="menu-item-4099"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4099">
+                                    <a href="/list/{{ list.id }}/1/">{{ list.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+                        <li style="float:right;">
+                <div class="toggle-search"><i class="fa fa-search"></i></div>
+                <div class="search-expand" style="display: none;">
+                    <div class="search-expand-inner">
+                        <form method="get" class="searchform themeform"
+                              onsubmit="location.href='/search/?s=' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;"
+                              action="/">
+                            <div><input type="ext" class="search" name="s"
+                                        onblur="if(this.value=='')this.value='search...';"
+                                        onfocus="if(this.value=='search...')this.value='';" value="search..."></div>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+<section class="container">
+    <div class="content-wrap">
+        <div class="content">
+            <header class="archive-header">
+                <h1><i class="fa fa-folder-open"></i> &nbsp;标签：{{ fl }} </h1>
+            </header>
+
+            {% for article in page_home %}
+                <article class="excerpt">
+                    <header><a class="label label-important" href="/list/{{ article.article_catalog.id }}">{{ article.article_catalog }}<i
+                            class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/{{ article.article_catalog.id }}/" title="{{ article.title }}">{{ article.title }} </a></h2>
+                    </header>
+                    <div class="focus"><a target="_blank" href="/article/{{ article.id }}/"><img style="width:256.0px; height:150.0px;" class="thumb" src="{{ article.image }}"
+                                                                        alt="{{ article.title }}"/></a></div>
+                    <h4 class="note">
+{{ article.brief }}</h4>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-clock-o"></i> {{ article.create_time.strftime("%Y-%m-%d") }} </span><span class="muted"><i class="fa fa-comments-o"></i> <a
+                            target="_blank" href="/article/{{ article.id }}/">{{ article.pingl }}评论</a></span><span class="muted">
+<a href="javascript:;" data-action="ding" data-id="4166" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span
+        class="count">{{ article.zan }}</span>喜欢</a></span></p>
+                </article>
+            {% endfor %}
+
+
+    <div class="pagination pagination-multi">
+        <ul>
+            {% if page_home.has_previous() %}
+                <li class="prev-page"><a href="/tags/{{ list_id }}/?page_num={{ page_home.previous_page_number() }}">上一页</a></li>
+            {% endif %}
+            {% for i in page_home.paginator.page_range %}
+                {% if i == page_num %}
+                    <li class="active"><span>{{ i }}</span></li>
+                {% else %}
+                    <li><a href="/tags/{{ list_id }}/?page_num={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+        {% if page_home.has_next() %}
+            <li class="next-page"><a href="/tags/{{ list_id }}/?page_num={{ page_home.next_page_number() }}">下一页</a></li>
+            <li><a href="/tags/{{ list_id }}/?page_num={{ page_home.paginator.num_pages }}">尾页</a></li>
+        {% endif %}
+            <li><span>共 {{ page_home.paginator.num_pages }} 页</span></li>
+        </ul>
+    </div>
+        </div>
+    </div>
+    <aside class="sidebar">
+
+        <div class="widget widget_text">
+            <div class="textwidget">
+                <div class="social">
+                        <a href="https://weibo.com/233feng" rel="external nofollow" title="新浪微博" target="_blank">
+                            <i class="sinaweibo fa fa-weibo"></i>
+                        </a>
+
+                        <a href="https://space.bilibili.com/31257521" rel="external nofollow" title="Bilibili" target="_blank">
+                            <i class="twitter fa fa-twitter">
+                                <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1583557258832" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1692" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M777.514667 131.669333a53.333333 53.333333 0 0 1 0 75.434667L728.746667 255.829333h49.92A160 160 0 0 1 938.666667 415.872v320a160 160 0 0 1-160 160H245.333333A160 160 0 0 1 85.333333 735.872v-320a160 160 0 0 1 160-160h49.749334L246.4 207.146667a53.333333 53.333333 0 1 1 75.392-75.434667l113.152 113.152c3.370667 3.370667 6.186667 7.04 8.448 10.965333h137.088c2.261333-3.925333 5.12-7.68 8.490667-11.008l113.109333-113.152a53.333333 53.333333 0 0 1 75.434667 0z m1.152 231.253334H245.333333a53.333333 53.333333 0 0 0-53.205333 49.365333l-0.128 4.010667v320c0 28.117333 21.76 51.157333 49.365333 53.162666l3.968 0.170667h533.333334a53.333333 53.333333 0 0 0 53.205333-49.365333l0.128-3.968v-320c0-29.44-23.893333-53.333333-53.333333-53.333334z m-426.666667 106.666666c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z m320 0c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z" p-id="1693" fill="#FFFFFF"></path></svg>
+                            </i>
+                        </a>
+
+                        <a href="https://github.com/kali404" rel="external nofollow" title="GitHub" target="_blank">
+                            <i class="github fa fa-github">
+
+                            </i>
+                        </a>
+
+                        <a class="weixin"><i class="weixins fa fa-weixin">
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1583557297535" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2427" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M894.2 611c-8.7-19-18.3-36.5-28.2-52.2-8.2-12.9-16.6-24.5-24.9-34.4-15-17.8-29.7-28.9-42.5-34.3 2-16.6 3-35.9 3-54.5 0-42.9-5.7-82.4-15.1-111.3-9.7-144.6-130.2-258.5-277.4-258.5-146.9 0-267.2 114.3-277.5 258.6-9.5 29-15.4 67.9-15.4 111.3 0 19.7 1.2 37 3.4 54.5-12.6 7.1-26.7 21.9-40.9 39.7-9.2 11.5-18.4 25-27.2 39.9-7.5 12.7-14.8 26.5-21.5 41.2-37.2 80.9-45 156.7-17.4 169.4 17.5 8.1 45.1-11.3 72.4-47.2 21.2 45.3 51.6 85.3 88.8 117.8-43.2 14.5-71.9 40-71.9 69.2 0 45.1 68.9 40.1 154 40.1 70.5 0 129.9 3.4 148.2-21.1h4.9c2.4 0 4.8 0 7.2-0.1 18.2 24.6 77.7 21.1 148.2 21.1 85 0 154 5 154-40.1 0-29.5-29.4-55.3-73.6-69.7 38.3-33.6 69.4-75.3 90.5-122.4 28.5 39.1 57.9 60.7 76.2 52.3 27.7-12.5 19.9-88.4-17.3-169.3z" fill="#FFFFFF" p-id="2428"></path></svg>
+                        </i>
+                            <div class="weixin-popover">
+                                <div class="popover bottom in">
+                                    <div class="arrow"></div>
+                                    <div class="popover-title">QQ群</div>
+                                    <div class="popover-content"><img src="/static/img/qq.png"></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="mailto: dewujie64@gmail.com" rel="external nofollow" title="Email" target="_blank"><i
+                                class="email fa fa-envelope-o"></i></a>
+                </div>
+        </div>
+
+
+        <div class="widget d_textbanner"><a class="style01" href="#" target="_blank">
+            <div class="title"><h2>关于我</h2></div>
+            <h3>一个热爱爱编程的人</h3>
+            <p><b>人生苦短，我用 Python！</b>
+博主是2016年末开始自学 Python 的，在第一次接触到 Python 的时候就爱上了这门编程语言，所以主攻 Python，顺带学习其他编程语言，目前在学习 Vue，后续可能使用 Flask + Vue 的方式扩展博客的功能
+                目前从事的工作主要偏向于 WEB开发,工作主要使用的技术栈是 Shell 和 Python.</br>
+Python 技能树：Django/Flask 的 web 框架，requests/scrapy/selenium 为主的爬虫框架，正则表达式/CSS/Xpath/ 等信息提取方式，写过一些简单的爬虫以及shell自动化脚本和树莓派等</p></a></div>
+
+        <div class="widget d_tag">
+            <div class="title"><h2>标签云</h2></div>
+            <div class="d_tags">
+                {% for cod in cloud %}
+                <a href="/tags/{{ cod.id }}/">{{ cod.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="widget d_postlist">
+            <div class="title"><h2>猜你喜欢</h2></div>
+            <ul>
+                {% for tab in tops %}
+                <li><a href="/article/{{ tab.id }}/" title="{{ tab.title }}"><span class="thumbnail"><img style="width:100.0px; height:56.0px;"
+                        src="{{ tab.image }}"
+                        alt="{{ tab.title }}"/></span><span class="text">{{ tab.title }}</span><span
+                        class="muted">{{ tab.create_time.strftime("%Y-%m-%d") }}</span><span class="muted" style="float: right;">{{ tab.pingl }}评论</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+{#        <div class="widget widget_links">#}
+{#            <div class="title"><h2>友情链接</h2></div>#}
+{#            <ul class='xoxo blogroll'>#}
+{#                {% for i in wailian %}#}
+{#                <li><a href="https://{{ i.hear }}" target="_blank">{{ i.name }}</a></li>#}
+{##}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+    </aside>
+</section>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="copyright pull-left">
+            <a href="#" title="欲思博客">夜风随笔</a> 版权所有，保留一切权利 ! Theme ©
+            2011-2014<a href="#" rel="nofollow" target="_blank">赣ICP备13005641号</a> · 托管于 <a rel="nofollow"
+                                                                                               target="_blank" href="#">阿里云</a>
+            & <a rel="nofollow" target="_blank" href="#">七牛</a>
+        </div>
+        <div class="trackcode pull-right">
+            <script type="text/javascript"
+                    src="https://s96.cnzz.com/z_stat.php?id=1277676441&web_id=1277676441"></script>
+        </div>
+    </div>
+</footer>
+
+
+<script type='text/javascript' src='/static/js/wp-embed.min.js?ver=5.2.2'></script>
+
+</body>
+</html>
