@@ -62,7 +62,17 @@ class ListViews(View):
         except:
             shangji = ''
 
-        articles = Article.objects.filter(article_catalog=list_id)
+        if Catalog.objects.get(id=list_id).pcat is not None:
+            articles = Article.objects.filter(article_catalog=list_id)
+        else:
+            articles = []
+            for e in Article.objects.filter(article_catalog=list_id):
+                    articles.append(e)
+            for i in Catalog.objects.filter(pcat=list_id):
+                for j in Article.objects.filter(article_catalog=i.id):
+                    articles.append(j)
+
+
         page = Paginator(articles, 15)
         page_home = page.page(page_num)
         context = {
@@ -86,8 +96,7 @@ class TagViews(View):
         articles = []
         tag_all = TagZJ.objects.filter(tags_id=tag_id)
         for idzj in tag_all:
-            for j in Article.objects.filter(id=idzj.article_id.id):
-                articles.append(j)
+            articles.append(idzj.article_id)
         page = Paginator(articles, 10)
         page_home = page.page(page_num)
         context = {

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y4b#jrk_an7dm78r$izf=9gg*anks_88j#r9qrktz!wh1&k3+0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -94,9 +94,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # 数据库引擎
         'HOST': '127.0.0.1', # 数据库主机
         'PORT': 3306, # 数据库端口
-        'USER': 'yefeng', # 数据库用户名
-        'PASSWORD': 'yefengblog', # 数据库用户密码
-        'NAME': 'yefeng_blog_db' # 数据库名字
+        'USER': 'root', # 数据库用户名
+        'PASSWORD': 'root', # 数据库用户密码
+        'NAME': 'blogs' # 数据库名字
     },
 }
 

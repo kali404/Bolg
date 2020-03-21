@@ -32,13 +32,13 @@
             {% for name in catalog %}
                 <li id="menu-item-4098"
                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-4098">
-                    <a href="/list/{{ name.id }}/1/">{{ name.name }}</a>
+                    <a href="/list/{{ name.id }}/">{{ name.name }}</a>
                     {% if name.lists %}
                         <ul class="sub-menu">
                             {% for list in name.lists %}
                                 <li id="menu-item-4099"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4099">
-                                    <a href="/list/{{ list.id }}/1/">{{ list.name }}</a></li>
+                                    <a href="/list/{{ list.id }}/">{{ list.name }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
@@ -190,18 +190,13 @@ Python 技能树：Django/Flask 的 web 框架，requests/scrapy/selenium 为主
 <footer class="footer">
     <div class="footer-inner">
         <div class="copyright pull-left">
-            <a href="#" title="欲思博客">夜风随笔</a> 版权所有，保留一切权利 ! Theme ©
-            2011-2014<a href="#" rel="nofollow" target="_blank">赣ICP备13005641号</a> · 托管于 <a rel="nofollow"
-                                                                                               target="_blank" href="#">阿里云</a>
-            & <a rel="nofollow" target="_blank" href="#">七牛</a>
+            <a href="#" title="欲思博客">夜风随笔</a> 版权所有，保留一切权利 ! 
+            <a href="https://whois.cloud.tencent.com/domain?domain=yefeng.wang" rel="nofollow" target="_blank">冀ICP备19020931号-1</a> · 托管于 <a rel="nofollow"
+                                                                                               target="_blank" href="https://www.aliyun.com/">阿里云</a>
+            & <a rel="nofollow" target="_blank" href="https://www.qiniu.com/">七牛</a>
         </div>
-        <div class="trackcode pull-right">
-            <script type="text/javascript"
-                    src="https://s96.cnzz.com/z_stat.php?id=1277676441&web_id=1277676441"></script>
-        </div>
-    </div>
-</footer>
 
+</footer>
 
 <script type='text/javascript' src='/static/js/wp-embed.min.js?ver=5.2.2'></script>
 
